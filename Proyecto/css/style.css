@@ -1,0 +1,39 @@
+#arriba {
+    padding: 10px;
+}
+.navbar {
+    border-radius: 10px;
+}
+  
+#arriba ul.navbar-nav {
+    justify-content: center;
+}
+  
+#arriba ul.navbar-nav li.nav-item {
+    margin: 0 170px;
+}
+#todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#perfile {
+    border-radius: 240px; 
+    display: block; 
+    margin: 0 auto; 
+}
+#empresa {
+    padding: 20px;
+}
+.card{
+    width: 18rem;
+}
+table{
+    padding: 10px;
+}
+#Correr {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
