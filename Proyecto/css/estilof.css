@@ -1,0 +1,20 @@
+#fondo{
+    background-image: url('https://i.imgur.com/s8ZNAVF.png');
+}
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+table{
+    background-color: rgb(111, 157, 218);
+    border-radius: 50px;
+}
+.btn {
+    display: block;
+    margin: 0 auto;
+}
+
+
