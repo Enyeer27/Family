@@ -1,0 +1,28 @@
+body {
+    background-image: url("../../assets/fondo.png");
+    width: 100%;
+    height: 100vh;
+  }
+.header-bg {
+    background-color:rgb(121, 207, 164);
+    color: white;
+    padding: 10px;
+}
+.btn-primary {
+    background-color: rgb(121, 207, 164);
+    border-color: rgb(121, 207, 164);
+}
+.form-control {
+    color: rgb(121, 207, 164);
+}
+.container {
+    margin-top: 20px;
+}
+
+table {
+    background-color: white;
+    border-radius: 5px;
+    padding: 50px;
+    width: 100%; 
+    margin: 0 auto; 
+}
