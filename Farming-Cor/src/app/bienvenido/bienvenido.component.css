@@ -1,0 +1,7 @@
+        /* Estilo personalizado para centrar verticalmente el contenido */
+        .center-vertically {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
