@@ -40,29 +40,31 @@ app.post('/registrar', (req, res) => {
   });
 });
 
-// Ruta para iniciar sesión
-app.post('/iniciar-sesion', (req, res) => {
-    const { usuario, password } = req.body;
-    console.log('Intento de inicio de sesión para el usuario:', usuario);
-  
-    const queryString = 'SELECT Nom_rol FROM Datos WHERE Usuario = ? AND password = ?';
-  
-    db.query(queryString, [usuario, password], (err, result) => {
-      if (err) {
-        console.error('Error al iniciar sesión:', err);
-        res.status(500).json({ error: 'Error interno del servidor' });
-      } else {
-        console.log('Resultado de la consulta:', result);
-  
-        if (result.length > 0) {
-          // Resto del código...
-        } else {
-          console.log('Credenciales incorrectas para el usuario:', usuario);
-          res.status(401).json({ error: 'Credenciales incorrectas' });
-        }
-      }
-    });
+//inisio de sesion
+app.post('/autenticar', (req, res) => {
+  const { usuario, password, rol } = req.body;
+
+  console.log('Datos recibidos:', { usuario, password, rol });
+
+  const query = `SELECT * FROM datos WHERE Usuario = ? AND password = ? AND Nom_rol = ?`;
+  db.query(query, [usuario, password, rol], (error, results) => {
+    if (error) {
+      console.error('Error en la autenticación:', error);
+      return res.status(500).json({ mensaje: 'Error en la autenticación' });
+    }
+
+    console.log('Resultados de la consulta:', results);
+
+    if (results.length > 0) {
+      return res.json({ mensaje: 'Autenticación exitosa' });
+    } else {
+      return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
+    }
   });
+});
+
+
+
   
 
 app.listen(port, () => {
