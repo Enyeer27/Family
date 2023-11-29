@@ -16,11 +16,14 @@ export class UsuarioService {
     return this.http.post(`${this.apiUrl}/registrar`, usuario);
   }
 
-  iniciarSesion(usuario: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/iniciar-sesion`, { usuario, password });
-  }
+  iniciarSesion(usuario: string, password: string, rol: string): Observable<any> {
+    const body = {
+      usuario: usuario,
+      password: password,
+      rol: rol
+    };
 
-  obtenerTipoUsuario(usuario: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/tipo-usuario/${usuario}`);
+    // Realiza la llamada al backend para autenticar al usuario
+    return this.http.post(`${this.apiUrl}/autenticar`, body);
   }
 }

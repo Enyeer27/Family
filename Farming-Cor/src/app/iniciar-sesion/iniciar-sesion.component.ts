@@ -10,34 +10,27 @@ import { UsuarioService } from '../usuario.service';
 export class IniciarSesionComponent {
   usuario: string = '';
   password: string = '';
+  rol: string = '';
 
-  constructor(private usuarioService: UsuarioService, private router: Router) {}
+  constructor(private authService: UsuarioService, private router: Router) {}
 
   iniciarSesion() {
-    this.usuarioService.iniciarSesion(this.usuario, this.password).subscribe(
-      (response: any) => {
-        console.log('Respuesta del servidor:', response);
-        const tipoUsuario = response.Nom_rol;
-
-        if (tipoUsuario === 'Proveedor') {
-          console.log('Proveedor ingresado correctamente');
-          alert('Proveedor ingresado correctamente');
-          this.router.navigate(['/pagina-principal-proveedor']);
-        } else if (tipoUsuario === 'Usuario') {
-          console.log('Usuario ingresado correctamente');
-          alert('Usuario ingresado correctamente');
-          this.router.navigate(['/pagina-principal-cliente']);
-        } else {
-          console.log('Tipo de usuario desconocido: ' + tipoUsuario);
-          alert('Error: Tipo de usuario desconocido: ' + tipoUsuario);
-          // Manejar el caso en que el tipo de usuario no sea Proveedor ni Usuario
+    // Lógica de autenticación aquí, utiliza tu servicio de autenticación
+    this.authService.iniciarSesion(this.usuario, this.password, this.rol)
+      .subscribe(
+        (respuesta) => {
+          // Autenticación exitosa, redirige según el rol
+          if (this.rol === 'Proveedor') {
+            this.router.navigate(['/perfil-proveedor']);
+          } else if (this.rol === 'Cliente') {
+            this.router.navigate(['/pagina-principal-cliente']);
+          } else {
+            console.error('Rol no reconocido');
+          }
+        },
+        (error) => {
+          console.error('Error al iniciar sesión:', error);
         }
-      },
-      (error) => {
-        console.error('Error al iniciar sesión:', error);
-        alert('Error al iniciar sesión: ' + error.message);
-        // Manejar el error
-      }
-    );
+      );
   }
 }
