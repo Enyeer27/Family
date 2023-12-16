@@ -53,4 +53,4 @@ INSERT INTO roles (nom_rol, estado) VALUES
 ('administrador', 1);
 
 INSERT INTO datos(id_user, fk_tipo_doc, nombre1, nombre2, apellido1, apellido2, correo, tel_cel, direccion, usuario, fk_tipo_rol, password) VALUES
-('103154', 1, 'santiago', '', 'salamanca','diaz', 'santiago@gmail.com','3112340332', 'Diagonal 48 d bis sur', 'santixl', 3, '123');
+('103154', 1, 'sergio', '', 'calderon','perdomo', 'calderon@gmail.com','32123132', 'Diagonal 48 d bis sur', 'calderon', 3, '123');
